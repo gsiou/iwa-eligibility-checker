@@ -58,6 +58,7 @@ function render(headers) {
 function updateHeaders() {
   chrome.runtime.sendMessage({ type: "getHeaders" }, (res) => {
     if (res && res.headers) {
+      // console.log(JSON.stringify(res.headers));
       render(res.headers);
     }
   });
@@ -73,7 +74,7 @@ document.getElementById("reload-btn").addEventListener("click", () => {
     if (!tabId) return;
 
     // Reload the tab
-    chrome.tabs.reload(tabId);
+    chrome.tabs.reload(tabId, { bypassCache: true });
 
     // Listen for reload completion
     const onUpdated = (updatedTabId, changeInfo) => {
