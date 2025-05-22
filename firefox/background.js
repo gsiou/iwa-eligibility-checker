@@ -2,6 +2,7 @@ const tabHeaders = {};
 
 chrome.webRequest.onHeadersReceived.addListener(
   (details) => {
+    // console.log("Headers received from:", details.url);
     const headers = {};
     for (const h of details.responseHeaders) {
       const name = h.name.toLowerCase();
@@ -17,7 +18,7 @@ chrome.webRequest.onHeadersReceived.addListener(
     }
     tabHeaders[details.tabId] = headers;
   },
-  { urls: ["<all_urls>"] },
+  { urls: ["<all_urls>"], types: ["main_frame"] },
   ["responseHeaders"]
 );
 
