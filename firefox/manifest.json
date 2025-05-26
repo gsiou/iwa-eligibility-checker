@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "IWA eligibility checker",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Checks for strict CSP and other security headers required by Isolated Web Apps.",
   "permissions": [
     "webRequest",
